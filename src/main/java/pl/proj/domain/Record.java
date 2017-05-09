@@ -1,32 +1,40 @@
 package pl.proj.domain;
 
-import javax.persistence.Entity;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 /**
  * Created by msz on 08.05.17.
  */
 @Entity
+@Table(name = "readings")
 public class Record {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    private String date;
+    @NotEmpty
+    private LocalDateTime date;
 
-    private String reading;
+    @NotEmpty
+    private double reading;
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public String getReading() {
+    public double getReading() {
         return reading;
     }
 
-    public void setReading(String reading) {
+    public void setReading(double reading) {
         this.reading = reading;
     }
 
