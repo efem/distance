@@ -2,6 +2,7 @@ package pl.proj.service;
 
 import pl.proj.domain.Record;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,6 +12,8 @@ public interface RecordService {
     List<Record> findAll();
 
     Record save (Record record);
+
+    Record save (Date date, String distance);
 
     Record getRecordById (Long id);
 

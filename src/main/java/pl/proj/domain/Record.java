@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Created by msz on 08.05.17.
@@ -17,25 +18,34 @@ public class Record {
     private Long id;
 
     @NotEmpty
-    private LocalDateTime date;
+    private Date date;
 
     @NotEmpty
-    private double reading;
+    private double distance;
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public Record() {
+        this(null, 0.0);
+    }
+
+    public Record(Date date, double distance) {
+        this.date = date;
+        this.distance = distance;
+    }
+
+    public void setDate(Date date) {
         this.date = date;
     }
 
     public double getReading() {
-        return reading;
+        return distance;
     }
 
     public void setReading(double reading) {
-        this.reading = reading;
+        this.distance = reading;
     }
 
     @Override
@@ -43,7 +53,7 @@ public class Record {
         return "Record{" +
                 "id=" + id +
                 ", date='" + date + '\'' +
-                ", reading='" + reading + '\'' +
+                ", reading='" + distance + '\'' +
                 '}';
     }
 }
