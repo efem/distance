@@ -3,6 +3,7 @@ package pl.proj.domain;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -17,10 +18,10 @@ public class Record {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+    @NotNull
     private Date date;
 
-    @NotEmpty
+    @NotNull
     private double distance;
 
     public Date getDate() {

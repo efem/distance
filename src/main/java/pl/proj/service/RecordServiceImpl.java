@@ -29,11 +29,12 @@ public class RecordServiceImpl implements RecordService {
     public Record save(Record record) {
         return recordDao.save(record);
     }
-    @Override
+
+   /* @Override
     public Record save(Date date, String distance) {
         Record record = new Record(date, Double.parseDouble(distance));
         return recordDao.save(record);
-    }
+    }*/
 
     @Override
     public Record getRecordById(Long id) {

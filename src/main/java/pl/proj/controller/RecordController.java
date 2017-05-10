@@ -1,10 +1,13 @@
 package pl.proj.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.proj.dao.RecordDao;
+import pl.proj.domain.Record;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,20 +19,15 @@ import java.util.List;
 @RestController
 public class RecordController {
 
+    static final Logger LOG = LoggerFactory.getLogger(RecordController.class);
+
     @Autowired
     RecordDao recordDao;
 
-    @RequestMapping("getTest")
-    public List<String> getTest() {
-        List<String> lista = new ArrayList<>();
-        lista.add("aaaa");
-
-        return lista;
-    }
-
-    @RequestMapping("putRecord/{distance}")
+    @RequestMapping("putRecord/{distance:.+|,+}")
     public String putRecord(@PathVariable String distance) {
-        recordDao.save(new Date(), distance);
+        recordDao.save(new Record(new Date(), Double.parseDouble(distance.replaceAll(",","."))));
+        LOG.info("READ: " + distance + ", " + Double.parseDouble(distance.replaceAll(",",".")));
         return "OK";
     }
 }

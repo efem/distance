@@ -13,8 +13,6 @@ public interface RecordService {
 
     Record save (Record record);
 
-    Record save (Date date, String distance);
-
     Record getRecordById (Long id);
 
     List <Record> getRecordsForDistance (double from, double to);
