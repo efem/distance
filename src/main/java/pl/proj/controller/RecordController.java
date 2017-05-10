@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.proj.dao.RecordDao;
 import pl.proj.domain.Record;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by msz on 08.05.17.
@@ -59,10 +63,11 @@ public class RecordController {
     @RequestMapping("showRecordsByDate")
     public List<Record> showRecordsBetweenDate(
             @RequestParam String from,
-            @RequestParam String to) {
-
+            @RequestParam String to) throws ParseException {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
         LOG.info("RECORDS FROM DATE: " + from + ", TO: " + to);
-
-        return recordDao.findByDateBetween(null, null);
+        Date dateFrom = format.parse(from);
+        Date dateTo = format.parse(to);
+        return recordDao.findByDateBetween(dateFrom, dateTo);
     }
 }
