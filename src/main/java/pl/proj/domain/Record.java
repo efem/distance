@@ -24,12 +24,17 @@ public class Record {
     @NotNull
     private double distance;
 
-    public Date getDate() {
-        return date;
+    public Record() {
+
+        this(new Date(), 0.0);
     }
 
-    public Record() {
-        this(null, 0.0);
+    public Record(double distance) {
+        this(new Date(), distance);
+    }
+
+    public Record(Date date) {
+        this(date, 0.0);
     }
 
     public Record(Date date, double distance) {
@@ -37,16 +42,20 @@ public class Record {
         this.distance = distance;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
     public void setDate(Date date) {
         this.date = date;
     }
 
-    public double getReading() {
+    public double getDistance() {
         return distance;
     }
 
-    public void setReading(double reading) {
-        this.distance = reading;
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     @Override
