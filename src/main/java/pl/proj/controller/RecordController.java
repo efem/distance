@@ -37,7 +37,7 @@ public class RecordController {
             @PathVariable String from,
             @PathVariable String to) {
 
-        LOG.info("FROM: " + from + ", TO: " + to);
+        LOG.info("RECORDS FROM DISTANCE: " + from + ", TO: " + to);
 
         return recordDao.findByDistanceBetween(
                 Double.parseDouble(from.replaceAll(",",".")),
@@ -49,10 +49,20 @@ public class RecordController {
             @RequestParam String from,
             @RequestParam String to) {
 
-        LOG.info("FROM: " + from + ", TO: " + to);
+        LOG.info("RECORDS FROM DISTANCE: " + from + ", TO: " + to);
 
         return recordDao.findByDistanceBetween(
                 Double.parseDouble(from.replaceAll(",",".")),
                 Double.parseDouble(to.replaceAll(",",".")));
+    }
+
+    @RequestMapping("showRecordsByDate")
+    public List<Record> showRecordsBetweenDate(
+            @RequestParam String from,
+            @RequestParam String to) {
+
+        LOG.info("RECORDS FROM DATE: " + from + ", TO: " + to);
+
+        return recordDao.findByDateBetween(null, null);
     }
 }

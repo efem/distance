@@ -17,4 +17,6 @@ public interface RecordService {
 
     List <Record> findByDistanceBetween (double from, double to);
 
+    List <Record> findByDateBetween (Date from, Date to);
+
 }

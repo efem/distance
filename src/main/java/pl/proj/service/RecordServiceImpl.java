@@ -39,4 +39,9 @@ public class RecordServiceImpl implements RecordService {
     public List<Record> findByDistanceBetween(double from, double to) {
         return recordDao.findByDistanceBetween(from, to);
     }
+
+    @Override
+    public List<Record> findByDateBetween(Date from, Date to) {
+        return recordDao.findByDateBetween(from, to);
+    }
 }
