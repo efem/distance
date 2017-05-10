@@ -1,4 +1,15 @@
-/bin/
-/target
-/.idea/
-/.mvn/
+### Java ###
+*.class
+target/
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# IDEA files #
+.idea/
+.mvn/

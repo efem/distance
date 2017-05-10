@@ -15,6 +15,6 @@ public interface RecordService {
 
     Record getRecordById (Long id);
 
-    List <Record> getRecordsForDistance (double from, double to);
+    List <Record> findByDistanceBetween (double from, double to);
 
 }

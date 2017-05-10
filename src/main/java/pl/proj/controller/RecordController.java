@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.proj.dao.RecordDao;
 import pl.proj.domain.Record;
@@ -29,5 +30,29 @@ public class RecordController {
         recordDao.save(new Record(new Date(), Double.parseDouble(distance.replaceAll(",","."))));
         LOG.info("READ: " + distance + ", " + Double.parseDouble(distance.replaceAll(",",".")));
         return "OK";
+    }
+
+    @RequestMapping("getRecords/{from:.+|,+}/{to:.+|,+}")
+    public List<Record> getRecordsBetweenDistance(
+            @PathVariable String from,
+            @PathVariable String to) {
+
+        LOG.info("FROM: " + from + ", TO: " + to);
+
+        return recordDao.findByDistanceBetween(
+                Double.parseDouble(from.replaceAll(",",".")),
+                Double.parseDouble(to.replaceAll(",",".")));
+    }
+
+    @RequestMapping("showRecords")
+    public List<Record> showRecordsBetweenDistance(
+            @RequestParam String from,
+            @RequestParam String to) {
+
+        LOG.info("FROM: " + from + ", TO: " + to);
+
+        return recordDao.findByDistanceBetween(
+                Double.parseDouble(from.replaceAll(",",".")),
+                Double.parseDouble(to.replaceAll(",",".")));
     }
 }
