@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78c1373b-127e-4d62-9691-156e822b6a3d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/pl/proj/controller/RecordController.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pl/proj/dao/RecordDao.class" afterPath="$PROJECT_DIR$/target/classes/pl/proj/dao/RecordDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/pl/proj/service/RecordService.class" afterPath="$PROJECT_DIR$/target/classes/pl/proj/service/RecordService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pl/proj/controller/RecordController.java" afterPath="$PROJECT_DIR$/src/main/java/pl/proj/controller/RecordController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -91,8 +85,8 @@
       <file leaf-file-name="RecordController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/controller/RecordController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="69" column="39" lean-forward="true" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+            <state relative-caret-position="-358">
+              <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -836,7 +830,7 @@
       <workItem from="1494352911092" duration="85000" />
       <workItem from="1494353065660" duration="6989000" />
       <workItem from="1494435930406" duration="112000" />
-      <workItem from="1494436058460" duration="2357000" />
+      <workItem from="1494436058460" duration="2589000" />
     </task>
     <task id="LOCAL-00001" summary="Controler 4 save">
       <created>1494421580965</created>
@@ -863,7 +857,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31877000" />
+    <option name="totallyTimeSpent" value="32109000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1358,8 +1352,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/controller/RecordController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="69" column="39" lean-forward="true" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+        <state relative-caret-position="-358">
+          <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
           <folding />
         </state>
       </provider>
