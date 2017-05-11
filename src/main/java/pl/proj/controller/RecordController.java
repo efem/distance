@@ -48,6 +48,14 @@ public class RecordController {
                 Double.parseDouble(to.replaceAll(",",".")));
     }
 
+    @RequestMapping("getAllRecords")
+    public List<Record> getAllRecords() {
+
+        LOG.info("ALL RECORDS");
+
+        return recordDao.findAll();
+    }
+
     @RequestMapping("showRecords")
     public List<Record> showRecordsBetweenDistance(
             @RequestParam String from,
