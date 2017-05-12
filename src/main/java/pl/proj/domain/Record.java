@@ -61,8 +61,7 @@ public class Record {
     @Override
     public String toString() {
         return "Record{" +
-                "id=" + id +
-                ", date='" + date + '\'' +
+                "date='" + date + '\'' +
                 ", reading='" + distance + '\'' +
                 '}';
     }
