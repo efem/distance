@@ -31,8 +31,8 @@
       <file leaf-file-name="DistanceApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/DistanceApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state relative-caret-position="109">
+              <caret line="30" column="60" lean-forward="false" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,20 +50,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecordService.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RecordService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/service/RecordService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="145">
               <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecordServiceImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecordServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/service/RecordServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
+            <state relative-caret-position="-128">
               <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
@@ -73,10 +73,10 @@
       <file leaf-file-name="RecordController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/controller/RecordController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="193">
+              <caret line="65" column="65" lean-forward="false" selection-start-line="65" selection-start-column="65" selection-end-line="65" selection-end-column="65" />
               <folding>
-                <marker date="1494945426751" expanded="true" signature="3128:3136" ph="{...}" />
+                <marker date="1494946661965" expanded="true" signature="3166:3174" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -795,7 +795,7 @@
       <workItem from="1494436058460" duration="2801000" />
       <workItem from="1494512737737" duration="6265000" />
       <workItem from="1494569247464" duration="8084000" />
-      <workItem from="1494941257877" duration="4190000" />
+      <workItem from="1494941257877" duration="5432000" />
     </task>
     <task id="LOCAL-00001" summary="Controler 4 save">
       <created>1494421580965</created>
@@ -832,11 +832,18 @@
       <option name="project" value="LOCAL" />
       <updated>1494945318053</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="MVC refactor">
+      <created>1494945519568</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1494945519568</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50860000" />
+    <option name="totallyTimeSpent" value="52102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="25" width="1368" height="743" extended-state="6" />
@@ -863,7 +870,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44720498" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16032211" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24743778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -888,7 +895,8 @@
     <MESSAGE value="Domain refactor" />
     <MESSAGE value="Get records between readings" />
     <MESSAGE value="Pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pagination" />
+    <MESSAGE value="MVC refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="MVC refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -937,7 +945,7 @@
         <state relative-caret-position="901">
           <caret line="65" column="48" lean-forward="false" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
           <folding>
-            <marker date="1494945426751" expanded="true" signature="3128:3136" ph="{...}" />
+            <marker date="1494946661965" expanded="true" signature="3166:3174" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -981,7 +989,7 @@
         <state relative-caret-position="80">
           <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
           <folding>
-            <marker date="1494945426751" expanded="true" signature="3128:3136" ph="{...}" />
+            <marker date="1494946661965" expanded="true" signature="3166:3174" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1033,7 +1041,7 @@
         <state relative-caret-position="112">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <marker date="1494945426751" expanded="true" signature="3128:3136" ph="{...}" />
+            <marker date="1494946661965" expanded="true" signature="3166:3174" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1051,7 +1059,7 @@
         <state relative-caret-position="80">
           <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
           <folding>
-            <marker date="1494945426751" expanded="true" signature="3128:3136" ph="{...}" />
+            <marker date="1494946661965" expanded="true" signature="3166:3174" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1137,7 +1145,7 @@
         <state relative-caret-position="85">
           <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
           <folding>
-            <marker date="1494945426751" expanded="true" signature="3128:3136" ph="{...}" />
+            <marker date="1494946661965" expanded="true" signature="3166:3174" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1197,7 +1205,7 @@
         <state relative-caret-position="85">
           <caret line="9" column="30" lean-forward="false" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
           <folding>
-            <marker date="1494945426751" expanded="true" signature="3128:3136" ph="{...}" />
+            <marker date="1494946661965" expanded="true" signature="3166:3174" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1249,7 +1257,7 @@
         <state relative-caret-position="112">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <marker date="1494945426751" expanded="true" signature="3128:3136" ph="{...}" />
+            <marker date="1494946661965" expanded="true" signature="3166:3174" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1301,6 +1309,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/service/RecordServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-128">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/controller/RecordController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="65" column="65" lean-forward="false" selection-start-line="65" selection-start-column="65" selection-end-line="65" selection-end-column="65" />
+          <folding>
+            <marker date="1494946661965" expanded="true" signature="3166:3174" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/DistanceApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="30" column="60" lean-forward="false" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
@@ -1311,36 +1347,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/service/RecordService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="145">
           <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/controller/RecordController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <marker date="1494945426751" expanded="true" signature="3128:3136" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/DistanceApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/proj/service/RecordServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>

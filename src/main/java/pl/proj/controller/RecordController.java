@@ -63,7 +63,7 @@ public class RecordController {
             @RequestParam int pageNumber,
             @RequestParam int pageSize) {
 
-        LOG.info("GET LAST RECORDS: " + pageNumber*pageSize);
+        LOG.info("GET LAST RECORDS: " + ((pageNumber-1)*pageSize+1) + " - " + pageNumber*pageSize);
         Page<Record> page = recordService.getPageOfRecord(pageNumber, pageSize);
         return page.getContent();
     }
