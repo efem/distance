@@ -1,5 +1,6 @@
 package pl.proj.service;
 
+import org.springframework.data.domain.Page;
 import pl.proj.domain.Record;
 
 import java.util.Date;
@@ -10,6 +11,8 @@ import java.util.List;
  */
 public interface RecordService {
     List<Record> findAll();
+
+    Page<Record> getPageOfRecord(int pageNumber, int pageSize);
 
     Record save (Record record);
 

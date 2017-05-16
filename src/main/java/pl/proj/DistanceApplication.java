@@ -36,22 +36,6 @@ public class DistanceApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) throws ParseException {
 		SpringApplication.run(DistanceApplication.class, args);
 
-        //final String url = "http://www.31337.ovh:8080/distance/getRecords/5/7";
-        final String url = "http://www.31337.ovh:8080/distance/getAllRecords";
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        List<Record> recordList = restTemplate.getForObject(url, List.class);
-
-        Record[] recList = restTemplate.getForObject(url, Record[].class);
-        System.out.println("recList: " + recList.toString());
-        for (Record r : recList) {
-            System.out.println("r: " + r.toString());
-        }
-
-        String xx = restTemplate.getForObject(url, String.class);
-
-        System.out.println(xx);
-
 
 	}
 }

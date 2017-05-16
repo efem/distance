@@ -1,6 +1,9 @@
 package pl.proj.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +29,13 @@ public class RecordServiceImpl implements RecordService {
     }
 
     @Override
+    public Page<Record> getPageOfRecord(int pageNumber, int pageSize) {
+        PageRequest request = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "id");
+        return recordDao.findAll(request);
+    }
+
+
+    @Override
     public Record save(Record record) {
         return recordDao.save(record);
     }
@@ -39,6 +49,7 @@ public class RecordServiceImpl implements RecordService {
     public List<Record> findByDistanceBetween(double from, double to) {
         return recordDao.findByDistanceBetween(from, to);
     }
+
 
     @Override
     public List<Record> findByDateBetween(Date from, Date to) {

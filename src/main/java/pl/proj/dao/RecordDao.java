@@ -16,4 +16,5 @@ public interface RecordDao extends JpaRepository<Record, Long> {
     List<Record> findByDistanceBetween(double from, double to);
 
     List<Record> findByDateBetween(Date from, Date to);
+
 }

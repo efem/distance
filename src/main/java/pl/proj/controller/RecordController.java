@@ -3,12 +3,14 @@ package pl.proj.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.proj.dao.RecordDao;
 import pl.proj.domain.Record;
+import pl.proj.service.RecordService;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -28,6 +30,9 @@ public class RecordController {
 
     @Autowired
     RecordDao recordDao;
+
+    @Autowired
+    RecordService recordService;
 
     @RequestMapping("putRecord/{distance:.+|,+}")
     public String putRecord(@PathVariable String distance) {
@@ -54,6 +59,16 @@ public class RecordController {
         LOG.info("ALL RECORDS");
 
         return recordDao.findAll();
+    }
+
+    @RequestMapping("getLastRecords")
+    public List<Record> getLastThree(
+            @RequestParam int pageNumber,
+            @RequestParam int pageSize) {
+
+        LOG.info("GET LAST RECORDS: " + pageNumber*pageSize);
+        Page<Record> page = recordService.getPageOfRecord(pageNumber, pageSize);
+        return page.getContent();
     }
 
     @RequestMapping("showRecords")
