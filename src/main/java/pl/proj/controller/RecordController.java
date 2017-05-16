@@ -29,14 +29,11 @@ public class RecordController {
     static final Logger LOG = LoggerFactory.getLogger(RecordController.class);
 
     @Autowired
-    RecordDao recordDao;
-
-    @Autowired
     RecordService recordService;
 
     @RequestMapping("putRecord/{distance:.+|,+}")
     public String putRecord(@PathVariable String distance) {
-        recordDao.save(new Record(new Date(), Double.parseDouble(distance.replaceAll(",","."))));
+        recordService.save(new Record(new Date(), Double.parseDouble(distance.replaceAll(",","."))));
         LOG.info("READ: " + distance + ", " + Double.parseDouble(distance.replaceAll(",",".")));
         return "OK";
     }
@@ -48,7 +45,7 @@ public class RecordController {
 
         LOG.info("RECORDS FROM DISTANCE: " + from + ", TO: " + to);
 
-        return recordDao.findByDistanceBetween(
+        return recordService.findByDistanceBetween(
                 Double.parseDouble(from.replaceAll(",",".")),
                 Double.parseDouble(to.replaceAll(",",".")));
     }
@@ -58,7 +55,7 @@ public class RecordController {
 
         LOG.info("ALL RECORDS");
 
-        return recordDao.findAll();
+        return recordService.findAll();
     }
 
     @RequestMapping("getLastRecords")
@@ -78,7 +75,7 @@ public class RecordController {
 
         LOG.info("RECORDS FROM DISTANCE: " + from + ", TO: " + to);
 
-        return recordDao.findByDistanceBetween(
+        return recordService.findByDistanceBetween(
                 Double.parseDouble(from.replaceAll(",",".")),
                 Double.parseDouble(to.replaceAll(",",".")));
     }
@@ -91,6 +88,6 @@ public class RecordController {
         LOG.info("RECORDS FROM DATE: " + from + ", TO: " + to);
         Date dateFrom = format.parse(from);
         Date dateTo = format.parse(to);
-        return recordDao.findByDateBetween(dateFrom, dateTo);
+        return recordService.findByDateBetween(dateFrom, dateTo);
     }
 }
