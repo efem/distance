@@ -1,10 +1,11 @@
 
 # User-specific stuff:
 .idea/**/
+.idea/
 
 ### Java ###
 *.class
-target/
+/target/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

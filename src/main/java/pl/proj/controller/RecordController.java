@@ -109,13 +109,13 @@ public class RecordController {
     public String putRecord(@PathVariable String distance) {
 
         try {
-            LOG.info("PUT RECORD (by PV): " + distance + ", " + Double.parseDouble(distance.replaceAll(",", ".")));
+            LOG.info("PUT RECORD (by PV): " + new Date() + ", " + distance + ", " + Double.parseDouble(distance.replaceAll(",", ".")));
             recordService.save(new Record(new Date(), Double.parseDouble(distance.replaceAll(",", "."))));
             return "OK";
         } catch (NumberFormatException nef) {
             LOG.error("ERROR PARSING: " + nef);
-            //return "BAD VALUE: " + nef.getMessage();
-            return handleAppException(nef);
+            return "BAD VALUE: " + nef.getMessage();
+            //return handleAppException(nef);
         }
 
     }
