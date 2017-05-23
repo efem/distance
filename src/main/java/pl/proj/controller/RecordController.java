@@ -14,6 +14,7 @@ import pl.proj.service.RecordService;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * Created by msz on 08.05.17.
@@ -22,7 +23,7 @@ import java.util.List;
 public class RecordController {
 
     static final Logger LOG = LoggerFactory.getLogger(RecordController.class);
-
+    private static final TimeZone utc = TimeZone.getTimeZone("UTC");
     @Autowired
     RecordService recordService;
 
@@ -99,11 +100,13 @@ public class RecordController {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @RequestMapping("putRecord/{distance:.+|,+}")
-    public String putRecord(@PathVariable String distance) {
+    public String putRecord(@PathVariable String distance) throws ParseException {
 
         try {
             LOG.info("PUT RECORD (by PV): " + new Date() + ", " + distance + ", " + Double.parseDouble(distance.replaceAll(",", ".")));
-            recordService.save(new Record(new Date(), Double.parseDouble(distance.replaceAll(",", "."))));
+            recordService.save(
+                    new Record(DateTimeHelper.getDateInUTC(),
+                    Double.parseDouble(distance.replaceAll(",", "."))));
             return "OK";
         } catch (NumberFormatException nef) {
             LOG.error("ERROR PARSING: " + nef);
