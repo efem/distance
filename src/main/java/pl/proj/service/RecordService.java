@@ -16,8 +16,6 @@ public interface RecordService {
 
     Record save (Record record);
 
-    Record getRecordById (Long id);
-
     List <Record> findByDistanceBetween (double from, double to);
 
     List <Record> findByDateBetween (Date from, Date to);

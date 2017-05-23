@@ -11,7 +11,9 @@ import pl.proj.domain.Record;
 import pl.proj.helper.DateTimeHelper;
 import pl.proj.service.RecordService;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -23,7 +25,7 @@ import java.util.TimeZone;
 public class RecordController {
 
     static final Logger LOG = LoggerFactory.getLogger(RecordController.class);
-    private static final TimeZone utc = TimeZone.getTimeZone("UTC");
+
     @Autowired
     RecordService recordService;
 
@@ -89,7 +91,10 @@ public class RecordController {
 
         LOG.info("SHOW RECORDS BETWEEN DATES (by RP): " + from + ", TO: " + to);
 
-        return recordService.findByDateBetween(DateTimeHelper.convertDateToUTC(from), DateTimeHelper.convertDateToUTC(to));
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+        Date dateFrom = format.parse(from);
+        Date dateTo = format.parse(to);
+        return recordService.findByDateBetween(dateFrom, dateTo);
     }
 
     @ExceptionHandler(Exception.class)
@@ -103,15 +108,15 @@ public class RecordController {
     public String putRecord(@PathVariable String distance) throws ParseException {
 
         try {
-            LOG.info("PUT RECORD (by PV): " + new Date() + ", " + distance + ", " + Double.parseDouble(distance.replaceAll(",", ".")));
+            LOG.info("PUT RECORD (by PV): " + new Date() + ", " + distance + ", " +
+                    Double.parseDouble(distance.replaceAll(",", ".")));
             recordService.save(
-                    new Record(DateTimeHelper.getDateInUTC(),
+                    new Record(DateTimeHelper.shiftDate(),
                     Double.parseDouble(distance.replaceAll(",", "."))));
             return "OK";
         } catch (NumberFormatException nef) {
             LOG.error("ERROR PARSING: " + nef);
-            return "BAD VALUE: " + nef.getMessage();
-            //return handleAppException(nef);
+            return "ERR - BAD VALUE: " + nef.getMessage();
         }
 
     }
