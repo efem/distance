@@ -19,7 +19,7 @@ public abstract class DateTimeHelper {
 
     public static Date getDateInUTC() throws ParseException {
         DateFormat formatCEST = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-        formatCEST.setTimeZone(TimeZone.getTimeZone("CEST"));
+        formatCEST.setTimeZone(TimeZone.getTimeZone("UTC"));
 
         DateFormat formatUTC= new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 
