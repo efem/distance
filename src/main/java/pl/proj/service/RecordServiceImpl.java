@@ -40,10 +40,6 @@ public class RecordServiceImpl implements RecordService {
         return recordDao.save(record);
     }
 
-    @Override
-    public Record getRecordById(Long id) {
-        return recordDao.findOne(id);
-    }
 
     @Override
     public List<Record> findByDistanceBetween(double from, double to) {
