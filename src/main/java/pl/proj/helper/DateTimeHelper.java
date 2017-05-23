@@ -1,4 +1,4 @@
-package pl.proj.controller;
+package pl.proj.helper;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -12,7 +12,7 @@ import java.util.TimeZone;
 public abstract class DateTimeHelper {
     public static Date convertDateToUTC(String dateString) throws ParseException {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+        format.setTimeZone(TimeZone.getTimeZone("CEST"));
         Date dateOutcome= format.parse(dateString);
         return  dateOutcome;
     }
