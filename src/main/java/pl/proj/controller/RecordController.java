@@ -92,10 +92,7 @@ public class RecordController {
 
         LOG.info("SHOW RECORDS BETWEEN DATES (by RP): " + from + ", TO: " + to);
 
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-        Date dateFrom = format.parse(from);
-        Date dateTo = format.parse(to);
-        return recordService.findByDateBetween(dateFrom, dateTo);
+        return recordService.findByDateBetween(DateTimeHelper.convertDateToUTC(from), DateTimeHelper.convertDateToUTC(to));
     }
 
     @ExceptionHandler(Exception.class)

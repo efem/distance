@@ -13,15 +13,11 @@ import java.util.TimeZone;
 @SpringBootApplication
 public class DistanceApplication extends SpringBootServletInitializer {
 
-/*    @Override
+    @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(DistanceApplication.class);
-    }*/
-
-    @PostConstruct
-    void started() {
-        TimeZone.setDefault(TimeZone.getTimeZone("Europe/Warsaw"));
     }
+
     public static void main(String[] args) throws ParseException {
         SpringApplication.run(DistanceApplication.class, args);
 
