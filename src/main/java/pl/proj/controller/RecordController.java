@@ -110,9 +110,12 @@ public class RecordController {
         try {
             LOG.info("PUT RECORD (by PV): " + new Date() + ", " + distance + ", " +
                     Double.parseDouble(distance.replaceAll(",", ".")));
-            recordService.save(
+            /*recordService.save(
                     new Record(DateTimeHelper.shiftDate(),
-                    Double.parseDouble(distance.replaceAll(",", "."))));
+                    Double.parseDouble(distance.replaceAll(",", "."))));*/
+            recordService.save(
+                    new Record(new Date(),
+                            Double.parseDouble(distance.replaceAll(",", "."))));
             return "OK";
         } catch (NumberFormatException nef) {
             LOG.error("ERROR PARSING: " + nef);
