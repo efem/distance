@@ -116,7 +116,7 @@ public class RecordController {
             recordService.save(
                     new Record(new Date(),
                             Double.parseDouble(distance.replaceAll(",", "."))));
-            return "OK";
+            return "OK - " + distance;
         } catch (NumberFormatException nef) {
             LOG.error("ERROR PARSING: " + nef);
             return "ERR - BAD VALUE: " + nef.getMessage();
