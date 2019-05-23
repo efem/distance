@@ -8,7 +8,6 @@ import pl.proj.domain.Record;
 import java.util.Date;
 import java.util.List;
 
-
 @Component
 public interface RecordDao extends JpaRepository<Record, Long> {
     List<Record> findByDistanceBetween(double from, double to);
