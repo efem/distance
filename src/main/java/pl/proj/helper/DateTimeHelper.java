@@ -11,14 +11,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-/**
- * Created by msz on 23.05.17.
- */
+
 public abstract class DateTimeHelper {
     public static Date shiftDate() {
 
         /*Shifting date by 2h - dirty way*/
-
         Date newDate = DateUtils.addHours(new Date(), 2);
         return  newDate;
     }

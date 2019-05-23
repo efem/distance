@@ -6,9 +6,6 @@ import pl.proj.domain.Record;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by msz on 09.05.17.
- */
 public interface RecordService {
     List<Record> findAll();
 

@@ -1,5 +1,6 @@
 package pl.proj.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-/**
- * Created by msz on 08.05.17.
- */
-@RestController
-public class RecordController {
 
-    static final Logger LOG = LoggerFactory.getLogger(RecordController.class);
+@RestController
+@Slf4j
+public class RecordController {
 
     @Autowired
     RecordService recordService;
@@ -39,44 +37,44 @@ public class RecordController {
                 "<br /><b>putRecord/X</b> - add a record with X distance</html>" ;
     }
 
-    @RequestMapping("getAllRecords")
-    public List<Record> getAllRecords() {
+    @GetMapping("getAllRecords")
+    List<Record> getAllRecords() {
 
-        LOG.info("GET ALL RECORDS");
+        log.info("GET ALL RECORDS");
 
         return recordService.findAll();
     }
 
-    @RequestMapping("getRecordsByDistance/{from:.+|,+}/{to:.+|,+}")
-    public List<Record> getRecordsBetweenDistance(
+    @GetMapping("getRecordsByDistance/{from:.+|,+}/{to:.+|,+}")
+    List<Record> getRecordsBetweenDistance(
             @PathVariable String from,
             @PathVariable String to) {
 
-        LOG.info("GET RECORDS BETWEEN DISTANCE (by PV): " + from + ", TO: " + to);
+        log.info("GET RECORDS BETWEEN DISTANCE (by PV): " + from + ", TO: " + to);
 
         return recordService.findByDistanceBetween(
                 Double.parseDouble(from.replaceAll(",", ".")),
                 Double.parseDouble(to.replaceAll(",", ".")));
     }
 
-    @RequestMapping("getRecordsByPage")
-    public List<Record> getLastThree(
+    @GetMapping("getRecordsByPage")
+    List<Record> getLastThree(
             @RequestParam int pageNumber,
             @RequestParam int pageSize) {
 
-        LOG.info("GET LAST RECORDS (by PV): " + ((pageNumber - 1) * pageSize + 1) + " - " + pageNumber * pageSize);
+        log.info("GET LAST RECORDS (by PV): " + ((pageNumber - 1) * pageSize + 1) + " - " + pageNumber * pageSize);
 
         Page<Record> page = recordService.getPageOfRecord(pageNumber, pageSize);
         return page.getContent();
     }
 
 
-    @RequestMapping("showRecordsByDistance")
-    public List<Record> showRecordsBetweenDistance(
+    @GetMapping("showRecordsByDistance")
+    List<Record> showRecordsBetweenDistance(
             @RequestParam String from,
             @RequestParam String to) {
 
-        LOG.info("SHOW RECORDS BETWEEN DISTANCE (by RP): " + from + ", TO: " + to);
+        log.info("SHOW RECORDS BETWEEN DISTANCE (by RP): " + from + ", TO: " + to);
 
         return recordService.findByDistanceBetween(
                 Double.parseDouble(from.replaceAll(",", ".")),
@@ -84,12 +82,12 @@ public class RecordController {
     }
 
 
-    @RequestMapping("showRecordsByDate")
-    public List<Record> showRecordsBetweenDate(
+    @GetMapping("showRecordsByDate")
+    List<Record> showRecordsBetweenDate(
             @RequestParam String from,
             @RequestParam String to) throws ParseException {
 
-        LOG.info("SHOW RECORDS BETWEEN DATES (by RP): " + from + ", TO: " + to);
+        log.info("SHOW RECORDS BETWEEN DATES (by RP): " + from + ", TO: " + to);
 
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
         Date dateFrom = format.parse(from);
@@ -99,26 +97,24 @@ public class RecordController {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleAppException(Exception ex) {
+    String handleAppException(Exception ex) {
         return ex.getMessage();
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    @RequestMapping("putRecord/{distance:.+|,+}")
-    public String putRecord(@PathVariable String distance) throws ParseException {
+    @PutMapping("record/{distance:.+|,+}")
+    public String putRecord(@PathVariable String distance) {
 
         try {
-            LOG.info("PUT RECORD (by PV): " + new Date() + ", " + distance + ", " +
+            log.info("PUT RECORD (by PV): " + new Date() + ", " + distance + ", " +
                     Double.parseDouble(distance.replaceAll(",", ".")));
-            /*recordService.save(
-                    new Record(DateTimeHelper.shiftDate(),
-                    Double.parseDouble(distance.replaceAll(",", "."))));*/
+
             recordService.save(
                     new Record(new Date(),
                             Double.parseDouble(distance.replaceAll(",", "."))));
             return "OK - " + distance;
         } catch (NumberFormatException nef) {
-            LOG.error("ERROR PARSING: " + nef);
+            log.error("ERROR PARSING: " + nef);
             return "ERR - BAD VALUE: " + nef.getMessage();
         }
 

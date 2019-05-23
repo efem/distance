@@ -13,9 +13,6 @@ import pl.proj.domain.Record;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Marek on 09.05.2017.
- */
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
 public class RecordServiceImpl implements RecordService {
@@ -33,7 +30,6 @@ public class RecordServiceImpl implements RecordService {
         PageRequest request = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "id");
         return recordDao.findAll(request);
     }
-
 
     @Override
     public Record save(Record record) {
