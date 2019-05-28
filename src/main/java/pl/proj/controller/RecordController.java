@@ -1,20 +1,23 @@
 package pl.proj.controller;
 
+import com.sun.jndi.toolkit.url.Uri;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import pl.proj.domain.Record;
 import pl.proj.service.RecordService;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 
 
 @RestController
@@ -24,25 +27,32 @@ public class RecordController {
     @Autowired
     RecordService recordService;
 
-    @RequestMapping("/")
-    public String start() {
-        return "<html><b>getAllRecords</b> - getting all records " +
-                "<br /><b>getRecordsByDistance/from/to</b> - getting records between from/to distance" +
-                "<br /><b>showRecordsByDistance?from=X&to=Y</b> - getting records between X and Y distance" +
-                "<br /><b>getRecordsByPage?pageNumber=X&pageSize=Y</b> - getting records with page number = X with page size = Y" +
-                "<br /><b>showRecordsByDate?from=X&to=Y</b> - getting records between X and Y dates (format: yyyy-MM-dd_HH-mm-ss)" +
-                "<br /><b>putRecord/X</b> - add a record with X distance</html>" ;
+    @GetMapping("/record/{id}")
+    public ResponseEntity<?> getRecord(@PathVariable String id) {
+        log.info("GET RECORD (with ID): {}", id);
+
+        return recordService.findById(Long.parseLong(id))
+                .map(record -> {
+                    try {
+                        return ResponseEntity
+                                .ok()
+                                .eTag(Long.toString(record.getId()))
+                                .location(new URI("/record/" + record.getId()))
+                                .body(record);
+                    } catch (URISyntaxException e) {
+                        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+                    }
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("getAllRecords")
-    List<Record> getAllRecords() {
-
+    @GetMapping("/getAllRecords")
+    Iterable<Record> getAllRecords() {
         log.info("GET ALL RECORDS");
-
         return recordService.findAll();
     }
 
-    @GetMapping("getRecordsByDistance/{from:.+|,+}/{to:.+|,+}")
+    @GetMapping("/getRecordsByDistance/{from:.+|,+}/{to:.+|,+}")
     List<Record> getRecordsBetweenDistance(
             @PathVariable String from,
             @PathVariable String to) {
@@ -54,8 +64,8 @@ public class RecordController {
                 Double.parseDouble(to.replaceAll(",", ".")));
     }
 
-    @GetMapping("getRecordsByPage")
-    List<Record> getLastThree(
+    @GetMapping("/getRecordsByPage")
+    Iterable<Record> getLastThree(
             @RequestParam int pageNumber,
             @RequestParam int pageSize) {
 
@@ -66,8 +76,8 @@ public class RecordController {
     }
 
 
-    @GetMapping("showRecordsByDistance")
-    List<Record> showRecordsBetweenDistance(
+    @GetMapping("/showRecordsByDistance")
+    Iterable<Record> showRecordsBetweenDistance(
             @RequestParam String from,
             @RequestParam String to) {
 
@@ -79,8 +89,8 @@ public class RecordController {
     }
 
 
-    @GetMapping("showRecordsByDate")
-    List<Record> showRecordsBetweenDate(
+    @GetMapping("/showRecordsByDate")
+    Iterable<Record> showRecordsBetweenDate(
             @RequestParam String from,
             @RequestParam String to) throws ParseException {
 
@@ -99,21 +109,19 @@ public class RecordController {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    @PutMapping("record/{distance:.+|,+}")
-    public String putRecord(@PathVariable String distance) {
+    @PutMapping("/addrecord/{distance:.+|,+}")
+    public ResponseEntity<Record> putRecord(@PathVariable String distance) {
+        double parsedDistance = Double.parseDouble(distance.replaceAll(",", "."));
+        log.info("PUT RECORD (by PV): " + new Date() + ", " + distance + ", " + parsedDistance);
 
+        Record newRecord = recordService.save(new Record(parsedDistance));
         try {
-            log.info("PUT RECORD (by PV): " + new Date() + ", " + distance + ", " +
-                    Double.parseDouble(distance.replaceAll(",", ".")));
-
-            recordService.save(
-                    new Record(new Date(),
-                            Double.parseDouble(distance.replaceAll(",", "."))));
-            return "OK - " + distance;
-        } catch (NumberFormatException nef) {
-            log.error("ERROR PARSING: " + nef);
-            return "ERR - BAD VALUE: " + nef.getMessage();
+            return ResponseEntity
+                    .created(new URI("/record/" + String.valueOf(newRecord.getId())))
+                    .eTag(String.valueOf(newRecord.getId()))
+                    .body(newRecord);
+        } catch (URISyntaxException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-
     }
 }

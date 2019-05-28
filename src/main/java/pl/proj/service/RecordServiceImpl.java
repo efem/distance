@@ -12,6 +12,7 @@ import pl.proj.domain.Record;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
@@ -19,6 +20,11 @@ public class RecordServiceImpl implements RecordService {
 
     @Autowired
     RecordDao recordDao;
+
+    @Override
+    public Optional<Record> findById(Long id) {
+        return recordDao.findById(id);
+    }
 
     @Override
     public List<Record> findAll() {
