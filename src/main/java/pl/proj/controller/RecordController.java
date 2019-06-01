@@ -24,8 +24,11 @@ import java.util.List;
 @Slf4j
 public class RecordController {
 
-    @Autowired
-    RecordService recordService;
+    private final RecordService recordService;
+
+    public RecordController(RecordService recordService) {
+        this.recordService = recordService;
+    }
 
     @GetMapping("/record/{id}")
     public ResponseEntity<?> getRecord(@PathVariable String id) {
